@@ -1,0 +1,22 @@
+.columnas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.columnas > * {
+  flex: 1 1 10px;
+  min-width: 140px;
+  
+}
+
+/* Responsive: en pantallas chicas, una sola columna */
+@media (max-width: 700px) {
+  .columnas {
+    flex-direction: column;
+  }
+}

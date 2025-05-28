@@ -2,7 +2,9 @@ import { prisma } from '../prisma/client.js';
 
 export const obtenerVengadores = async (req, res) => {
   try {
-    const vengadores = await prisma.vengador.findMany();
+    const vengadores = await prisma.vengador.findMany({
+      include: { habilidades: true }
+    });
     res.json(vengadores);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener los vengadores' });
@@ -34,6 +36,12 @@ export const actualizarVengador = async (req, res) => {
   const { nombre, alias, actor, habilidades } = req.body;
 
   try {
+    // Elimina habilidades anteriores
+    await prisma.habilidad.deleteMany({
+      where: { vengadorId: Number(id) }
+    });
+
+    // Actualiza el vengador y agrega nuevas habilidades
     const vengadorActualizado = await prisma.vengador.update({
       where: { id: Number(id) },
       data: {
@@ -44,6 +52,7 @@ export const actualizarVengador = async (req, res) => {
           create: habilidades.map((habilidad) => ({ nombre: habilidad })),
         },
       },
+      include: { habilidades: true }
     });
     res.json(vengadorActualizado);
   } catch (error) {
