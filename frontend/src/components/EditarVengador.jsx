@@ -44,10 +44,10 @@ function EditarVengador({ vengador, onGuardar, onCancelar }) {
     background: '#111',
     border: '2px solid #222',
     color: '#fff',
-    padding: 24, // Menos padding para que los inputs ocupen más espacio
+    padding: 24,
     borderRadius: 10,
     maxWidth: 400,
-    width: '90vw', // Responsive: ocupa casi todo el ancho en móviles
+    width: '90vw', 
     margin: '0 auto',
     boxShadow: '0 0 24px #000'
   }}>
