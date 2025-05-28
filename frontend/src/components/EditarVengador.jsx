@@ -41,105 +41,108 @@ function EditarVengador({ vengador, onGuardar, onCancelar }) {
 
   return (
     <div style={{
-      background: '#111',
-      border: '2px solid #222',
-      color: '#fff',
-      padding: 24,
-      borderRadius: 10,
-      maxWidth: 400,
-      margin: '0 auto',
-      boxShadow: '0 0 24px #000'
-    }}>
-      <h3 style={{ color: '#fff', textAlign: 'center' }}>Editar Vengador</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nombre"
-          value={nombre}
-          onChange={e => setNombre(e.target.value)}
-          required
-          style={{
-            display: 'block',
-            marginBottom: 12,
-            width: '100%',
-            background: '#222',
-            color: '#fff',
-            border: '1px solid #444',
-            padding: 8,
-            borderRadius: 4
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Alias"
-          value={alias}
-          onChange={e => setAlias(e.target.value)}
-          required
-          style={{
-            display: 'block',
-            marginBottom: 12,
-            width: '100%',
-            background: '#222',
-            color: '#fff',
-            border: '1px solid #444',
-            padding: 8,
-            borderRadius: 4
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Habilidades (separadas por coma)"
-          value={habilidades}
-          onChange={e => setHabilidades(e.target.value)}
-          required
-          style={{
-            display: 'block',
-            marginBottom: 12,
-            width: '100%',
-            background: '#222',
-            color: '#fff',
-            border: '1px solid #444',
-            padding: 8,
-            borderRadius: 4
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Actor"
-          value={actor}
-          onChange={e => setActor(e.target.value)}
-          required
-          style={{
-            display: 'block',
-            marginBottom: 16,
-            width: '100%',
-            background: '#222',
-            color: '#fff',
-            border: '1px solid #444',
-            padding: 8,
-            borderRadius: 4
-          }}
-        />
-        <button type="submit" style={{
-          marginRight: 8,
-          background: '#0d6efd',
+    background: '#111',
+    border: '2px solid #222',
+    color: '#fff',
+    padding: 24, // Menos padding para que los inputs ocupen más espacio
+    borderRadius: 10,
+    maxWidth: 400,
+    width: '90vw', // Responsive: ocupa casi todo el ancho en móviles
+    margin: '0 auto',
+    boxShadow: '0 0 24px #000'
+  }}>
+    <h3 style={{ color: '#fff', textAlign: 'center' }}>Editar Vengador</h3>
+    <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+      <input
+        type="text"
+        placeholder="Nombre"
+        value={nombre}
+        onChange={e => setNombre(e.target.value)}
+        required
+        style={{
+          display: 'block',
+          marginBottom: 12,
+          width: '100%',
+          background: '#222',
           color: '#fff',
-          border: 'none',
-          padding: '8px 16px',
-          borderRadius: 4,
-          cursor: 'pointer'
-        }}>Guardar</button>
-        <button type="button" onClick={onCancelar} style={{
-          background: '#444',
+          border: '1px solid #444',
+          padding: 8,
+          borderRadius: 4
+        }}
+      />
+      <input
+        type="text"
+        placeholder="Alias"
+        value={alias}
+        onChange={e => setAlias(e.target.value)}
+        required
+        style={{
+          display: 'block',
+          marginBottom: 12,
+          width: '100%',
+          background: '#222',
           color: '#fff',
-          border: 'none',
-          padding: '8px 16px',
-          borderRadius: 4,
-          cursor: 'pointer'
-        }}>Cancelar</button>
-      </form>
-    </div>
-  );
+          border: '1px solid #444',
+          padding: 8,
+          borderRadius: 4
+        }}
+      />
+      <input
+        type="text"
+        placeholder="Habilidades (separadas por coma)"
+        value={habilidades}
+        onChange={e => setHabilidades(e.target.value)}
+        required
+        style={{
+          display: 'block',
+          marginBottom: 12,
+          width: '100%',
+          background: '#222',
+          color: '#fff',
+          border: '1px solid #444',
+          padding: 8,
+          borderRadius: 4
+        }}
+      />
+      <input
+        type="text"
+        placeholder="Actor"
+        value={actor}
+        onChange={e => setActor(e.target.value)}
+        required
+        style={{
+          display: 'block',
+          marginBottom: 16,
+          width: '100%',
+          background: '#222',
+          color: '#fff',
+          border: '1px solid #444',
+          padding: 8,
+          borderRadius: 4
+        }}
+      />
+      <button type="submit" style={{
+        marginRight: 8,
+        background: '#0d6efd',
+        color: '#fff',
+        border: 'none',
+        padding: '8px 16px',
+        borderRadius: 4,
+        cursor: 'pointer',
+        width: '48%'
+      }}>Guardar</button>
+      <button type="button" onClick={onCancelar} style={{
+        background: '#444',
+        color: '#fff',
+        border: 'none',
+        padding: '8px 16px',
+        borderRadius: 4,
+        cursor: 'pointer',
+        width: '48%'
+      }}>Cancelar</button>
+    </form>
+  </div>
+);
 }
 
 export default EditarVengador;
