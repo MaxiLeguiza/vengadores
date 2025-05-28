@@ -2,7 +2,7 @@ import { prisma } from '../prisma/client.js';
 
 export const obtenerVengadores = async (req, res) => {
   try {
-    const vengadores = await prisma.vengador.findMany({
+    const vengadores = await prisma.advenger.findMany({
       include: { habilidades: true }
     });
     res.json(vengadores);
@@ -15,15 +15,16 @@ export const crearVengador = async (req, res) => {
   const { nombre, alias, actor, habilidades } = req.body;
 
   try {
-    const nuevoVengador = await prisma.vengador.create({
+    const nuevoVengador = await prisma.advenger.create({
       data: {
         nombre,
         alias,
         actor,
         habilidades: {
-          create: habilidades.map((habilidad) => ({ nombre: habilidad })),
+          create: habilidades.map((nombre) => ({ nombre })),
         },
       },
+      include: { habilidades: true }
     });
     res.status(201).json(nuevoVengador);
   } catch (error) {
@@ -37,19 +38,19 @@ export const actualizarVengador = async (req, res) => {
 
   try {
     // Elimina habilidades anteriores
-    await prisma.habilidad.deleteMany({
-      where: { vengadorId: Number(id) }
+    await prisma.habilidadesAdvenger.deleteMany({
+      where: { advengerId: Number(id) }
     });
 
     // Actualiza el vengador y agrega nuevas habilidades
-    const vengadorActualizado = await prisma.vengador.update({
+    const vengadorActualizado = await prisma.advenger.update({
       where: { id: Number(id) },
       data: {
         nombre,
         alias,
         actor,
         habilidades: {
-          create: habilidades.map((habilidad) => ({ nombre: habilidad })),
+          create: habilidades.map((nombre) => ({ nombre })),
         },
       },
       include: { habilidades: true }
@@ -64,7 +65,7 @@ export const eliminarVengador = async (req, res) => {
   const { id } = req.params;
 
   try {
-    await prisma.vengador.delete({
+    await prisma.advenger.delete({
       where: { id: Number(id) },
     });
     res.status(204).send();
